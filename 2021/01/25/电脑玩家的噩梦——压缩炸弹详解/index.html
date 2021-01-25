@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<meta  lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff" id="theme-color">
+  <link rel="icon" href="/img/logo.png">
+  <title>我是忆白的个人博客</title>
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+    var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+      }
+    };
+    setDarkmode();
+  </script>
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  <link rel="preload" href="//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js" as="script">
+  
+  
+  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <div class="wrapper">
+    
+    <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+      <img class="navbar-logo-img" src="/img/logo.png">
+      
+      <span class="navbar-logo-dsc">我是忆白的个人博客</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+    <a href="/" class="navbar-menu-item">首页 </a>
+    
+    <a href="/archives" class="navbar-menu-item">归档 </a>
+    
+    <a href="/tags" class="navbar-menu-item">标签 </a>
+    
+    <a href="/categories" class="navbar-menu-item">分类 </a>
+    
+    <a href="/about" class="navbar-menu-item">关于 </a>
+    
+    <a href="/links" class="navbar-menu-item">友链 </a>
+    
+    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
+  </div>
+</nav>
+    
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <main class="main-column">
+<div class="image-wrapper">
+  <img src="/img/bomb1.jpg" data-src="/img/bomb1.jpg"
+    srcset="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
+    class="image lozad">
+</div>
+
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      电脑玩家的噩梦————压缩炸弹详解
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2021-01-25T11:00:00.000Z" style="display: flex; align-items: center;">
+      <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+      <span>2021-01-25</span>
+    </time>
+    
+    <span class="dot"></span>
+    
+    <a href="/categories/科普介绍/" class="post-meta-link">科普介绍</a>
+    
+    
+    
+    <span class="dot"></span>
+    <span>828 字</span>
+    
+  </div>
+  
+  <div class="post-meta post-show-meta" style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i class="iconfont icon-biaoqian" style="margin-right: 2px; font-size: 1.15rem;"></i>
+      
+      
+        <a href="/tags/科普程序/" class="post-meta-link">科普程序</a>
+      
+    </div>
+  </div>
+  
+  </header>
+  <div id="section" class="post-content">
+    <h1 id="前面的话……"><a href="#前面的话……" class="headerlink" title="前面的话……"></a>前面的话……</h1><p>嗨！<br>我是忆白<br>今天我来更新了网站的第三篇文章<br>我们来讲一讲大家可能会听到的“压缩炸弹”一词究竟是何方神圣？<br>他又是用什么方法来让你的电脑BOOM的？<br>往下康！</p>
+<h1 id="了解压缩"><a href="#了解压缩" class="headerlink" title="了解压缩"></a>了解压缩</h1><p>在每个人的电脑当中<br>多多少少都会有一种东西吧！<br>XXX.RAR<br>XXX.ZIP<br>是不是awa<br>那你解压缩是不是又要用到————<br>Bandizip,7-zip,WinRAR,WinZIP?<br>其实无论是哪一个，用了哪一个压缩方式<br>它们，包括我们的目的都是：压缩！往死里缩！<br>然而大家光顾着用<br>却忽略了“压缩”这个词<br>那么问题来了<br>这玩意儿<br>到底是怎么压缩的？<br>来让我们看看最常见的一种编码————哈夫曼编码的原理吧！<br>哈夫曼编码的特殊之处在于<br>它是根据每一个源字符出现的估算概率而建立起来的<br>（出现概率高的字符使用较短的编码，反之出现概率低的则使用较长的编码，<br>这便使编码之后的字符串的平均期望长度降低，从而达到无损压缩数据的目的）<br>例如，在英文中<br>e的出现概率很高<br>当利用哈夫曼编码对一篇英文进行压缩时<br>e极有可能用一个bit来表示<br>用普通的表示方法时<br>每个英文字母均占用一个byte，即8个bit<br>二者相比，e只使用了一般编码的1/8的长度<br>若能实现对于英文中各个字母出现概率的较准确的估算<br>就可以大幅度提高无损压缩的比例<br>学废了吗？</p>
+<h1 id="了解压缩炸弹"><a href="#了解压缩炸弹" class="headerlink" title="了解压缩炸弹"></a>了解压缩炸弹</h1><p>那么接下来就可以了解压缩炸弹了！<br>压缩炸弹的原理很简单<br>就是利用压缩算法<br>把一段很长很长很长很长很长很长很长很长很长很长很长很长的文字<br>压缩成很小的大小<br>我们来举个栗子！<br>我这里输入80个8<br>那么就是……<br>888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888<br>但是呢？<br>如果用我自创的算法压缩<br>那就是————<br>80-8<br>意思就是80个8<br>这段压缩后的字符只占了4个bit<br>原本要80个bit<br>压缩比达到了惊人的5%!<br>这下你明白原理了吧！</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>这里我创建了一个文件夹，名字就叫1吧<br><img src="/img/1-1.PNG" alt="创建文件夹" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/1-1.PNG" class="lozad post-image"><br>然后在里面创建一个文本文档，也叫1吧<br><img src="/img/1-2.PNG" alt="创建一个文本文档" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/1-2.PNG" class="lozad post-image"><br>接着就是在里面输入很多很多很多很多很多很多很多很多很多很多很多的数字，也输1吧<br><img src="/img/1-3.PNG" alt="输入很多数字" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/1-3.PNG" class="lozad post-image"><br>我输入完了是出现了一个168432KB(约合164MB)的文件<br><img src="/img/1-4.PNG" alt="168432KB的文件" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/1-4.PNG" class="lozad post-image"><br>接着在这个文件夹里把这个文本文档复制几个出来，形成一个1.28GB的文件夹<br><img src="/img/1-5.gif" alt="复制几个出来" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/1-5.gif" class="lozad post-image"><br>接着把这个文件夹压缩成压缩包<br>然后就完成啦！<br>我们获得了一个文件大小只有1.3MB的压缩文件<br>可是解压出来却有1.28GB！<br>神奇不awa<br>你还可以做得更大<br>变成一个威力更大的炸弹！<br>不过责任自负awa<br>这个文件的下载链接是：<a target="_blank" rel="noopener" href="https://iamyibai.lanzous.com/iIeOzku8vla">https://iamyibai.lanzous.com/iIeOzku8vla</a><br>请自取~<br>可以伪装一下发给你的好基友……嘿嘿嘿<br>嘿嘿嘿！</p>
+
+  </div>
+  <div>
+  
+  </div>
+</article>
+<div class="nav">
+  
+  
+  <div class="nav-item-next">
+    <a href="/2021/01/25/电脑党的噩梦——压缩炸弹详解/" class="nav-link">
+      <div>
+        <div class="nav-label">下一篇</div>
+        
+        <div class="nav-title">电脑玩家的噩梦——压缩炸弹详解 </div>
+        
+      </div>
+      <i class="iconfont icon-right nav-next-icon"></i>
+    </a>
+  </div>
+  
+</div>
+
+<div class="card card-content toc-card" id="mobiletoc">
+  <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E9%9D%A2%E7%9A%84%E8%AF%9D%E2%80%A6%E2%80%A6"><span class="toc-text">前面的话……</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">了解压缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8E%8B%E7%BC%A9%E7%82%B8%E5%BC%B9"><span class="toc-text">了解压缩炸弹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol>
+</div></main>
+          <aside class="left-column">
+            
+            <div class="card card-author">
+              
+<img src="/img/logo.png" class="author-img">
+
+<p class="author-name">我是忆白qwq</p>
+<p class="author-description">designed by yibai</p>
+<div class="author-message">
+  <a class="author-posts-count" href="/archives">
+    <span>4</span>
+    <span>文章</span>
+  </a>
+  <a class="author-categories-count" href="/categories">
+    <span>3</span>
+    <span>分类</span>
+  </a>
+  <a class="author-tags-count" href="/tags">
+    <span>3</span>
+    <span>标签</span>
+  </a>
+</div>
+
+<div class="author-card-society">
+  
+    <div class="author-card-society-icon">
+      <a target="_blank" rel="noopener" href="https://space.bilibili.com/475604647">
+        <i class="iconfont icon-bilibili society-icon"></i>
+      </a>
+    </div>
+  
+    <div class="author-card-society-icon">
+      <a href="mailto:hezai_wjy@163.com">
+        <i class="iconfont icon-mail society-icon"></i>
+      </a>
+    </div>
+  
+    <div class="author-card-society-icon">
+      <a target="_blank" rel="noopener" href="https://github.com/Yibai-cpu">
+        <i class="iconfont icon-github society-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+            </div>
+            
+            <div class="sticky-tablet">
+  
+  
+  <article class="display-when-two-columns spacer">
+    <div class="card card-content toc-card">
+      <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E9%9D%A2%E7%9A%84%E8%AF%9D%E2%80%A6%E2%80%A6"><span class="toc-text">前面的话……</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">了解压缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8E%8B%E7%BC%A9%E7%82%B8%E5%BC%B9"><span class="toc-text">了解压缩炸弹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol>
+    </div>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="categories-card">
+  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
+  <div class="categories-list">
+    
+      <a href="/categories/网站更新">
+        <div class="categories-list-item">
+          网站更新
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/自制程序">
+        <div class="categories-list-item">
+          自制程序
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/科普介绍">
+        <div class="categories-list-item">
+          科普介绍
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content">
+    <div class="tags-card">
+  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>热门标签</div>
+  <div class="tags-list">
+    
+    <a href="\tags\科普程序" title="科普程序"><div class="tags-list-item">科普程序</div></a>
+    
+    <a href="\tags\程序" title="程序"><div class="tags-list-item">程序</div></a>
+    
+    <a href="\tags\开篇之作" title="开篇之作"><div class="tags-list-item">开篇之作</div></a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+  
+  
+  <article class="card card-content toc-card">
+    <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E9%9D%A2%E7%9A%84%E8%AF%9D%E2%80%A6%E2%80%A6"><span class="toc-text">前面的话……</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-text">了解压缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8E%8B%E7%BC%A9%E7%82%B8%E5%BC%B9"><span class="toc-text">了解压缩炸弹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>最近文章</div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2021-01-25</div>
+        <a href="/2021/01/25/电脑玩家的噩梦——压缩炸弹详解/"><div class="recent-posts-item-content">电脑玩家的噩梦————压缩炸弹详解</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2021-01-25</div>
+        <a href="/2021/01/25/电脑党的噩梦——压缩炸弹详解/"><div class="recent-posts-item-content">电脑玩家的噩梦——压缩炸弹详解</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2021-01-10</div>
+        <a href="/2021/01/10/自制爱心生成器/"><div class="recent-posts-item-content">自制爱心生成器</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2021-01-09</div>
+        <a href="/2021/01/09/hello/"><div class="recent-posts-item-content">Hello</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>Copyright ©
+          
+          2020 -
+          
+          2021
+        </span>
+        <a href="/" class="footer-link">我是忆白的个人博客 </a>
+      </div>
+    </div>
+
+    
+    <div class="footer-dsc">
+      
+      
+      Powered by
+      <a href="https://hexo.io/" class="footer-link" target="_blank" rel="nofollow noopener noreferrer">&nbsp;Hexo </a>
+      
+      
+      <span>&nbsp;|&nbsp;</span>
+      
+      
+      
+      Theme -
+      <a href="https://github.com/theme-kaze" class="footer-link" target="_blank"
+        rel="nofollow noopener noreferrer">&nbsp;Kaze</a>
+      
+    </div>
+    
+    
+    
+    
+      <div class="footer-dsc">
+        
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+        
+        <span>&nbsp;|&nbsp;</span>
+        
+        
+        本站总访客数<span id="busuanzi_value_site_uv"></span>人
+        
+      </div>
+      
+    
+</footer>
+  <a role="button" id="scrollbutton" class="basebutton" >
+  <i class="iconfont icon-arrowleft button-icon"></i>
+</a>
+<a role="button" id="menubutton" class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a role="button" id="popbutton" class="basebutton">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a role="button" id="darkbutton" class="basebutton darkwidget">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+
+  
+  
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('data-fslightbox', 'gallery');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
+      img[i].parentElement.insertBefore(wrapper, img[i]);
+      wrapper.appendChild(img[i]);
+    }
+    refreshFsLightbox();
+  }
+</script>
+<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
+  
+  
+  
+<script src="/js/main.js"></script>
+
+  
+  <script>loadScript("/js/lib/busuanzi.min.js")</script>
+  
+  
+  <script>
+    var addLazyload = function () {
+      var observer = lozad('.lozad', {
+        load: function (el) {
+          el.srcset = el.getAttribute('data-src');
+        },
+        loaded: function (el) {
+          el.classList.add('loaded');
+        }
+      });
+      observer.observe();
+    }
+  </script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  
+  
+</body>
+
+</html>
